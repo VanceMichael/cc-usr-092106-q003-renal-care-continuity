@@ -1,0 +1,10 @@
+{
+  "domain": "renal-care-continuity",
+  "version": 1,
+  "facts": [
+    "透析患者通常在相对固定机构就诊",
+    "异常人群可能同日多院开取相同药物",
+    "监管不能替代真实诊疗判断"
+  ],
+  "sample_id": "sample-003"
+}
