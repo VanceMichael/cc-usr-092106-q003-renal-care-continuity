@@ -1,0 +1,499 @@
+{
+  "domain": "renal-care-continuity",
+  "as_of": "2026-09-30",
+  "description": "虚构样例：三位慢性肾病透析患者在区域医联体内的跨院取药事实流。所有人名、机构与数据均为虚构。",
+  "drug_catalog": {
+    "ESA-ALFA": { "name": "重组促红素α（虚构代号）", "unit": "IU" },
+    "P-BINDER": { "name": "磷结合剂（虚构代号）", "unit": "袋" }
+  },
+  "records": [
+    {
+      "type": "patient_alias",
+      "payload": { "patient_code": "P-CKD-1001" },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "dialysis_schedule",
+      "payload": {
+        "patient_code": "P-CKD-1001",
+        "site_code": "SITE-A",
+        "schedule": "周一/周三/周五 上午",
+        "effective_from": "2026-01-05",
+        "effective_to": "2026-08-31"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "dialysis_schedule",
+      "payload": {
+        "patient_code": "P-CKD-1001",
+        "site_code": "SITE-B",
+        "schedule": "周二/周四/周六 上午",
+        "effective_from": "2026-09-01"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "care_episode",
+      "payload": {
+        "patient_code": "P-CKD-1001",
+        "episode_id": "EP-1001-01",
+        "site_code": "SITE-A",
+        "admitted_on": "2026-01-05",
+        "transferred_out_on": "2026-08-31",
+        "kind": "routine"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "care_episode",
+      "payload": {
+        "patient_code": "P-CKD-1001",
+        "episode_id": "EP-1001-02",
+        "site_code": "SITE-B",
+        "admitted_on": "2026-09-01",
+        "kind": "routine"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "regimen_version",
+      "payload": {
+        "patient_code": "P-CKD-1001",
+        "version": 1,
+        "effective_from": "2026-01-05",
+        "items": [
+          { "drug_code": "ESA-ALFA", "daily_dose": 4000, "daily_max": 6000, "unit": "IU", "note": "按周剂量折算的日均剂量" },
+          { "drug_code": "P-BINDER", "daily_dose": 3, "daily_max": 4, "unit": "袋" }
+        ]
+      },
+      "actor": { "id": "dr-a-01", "role": "clinician" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1001", "prescription_id": "RX-1001-01", "site_code": "SITE-A",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-07-21"
+      },
+      "actor": { "id": "dr-a-01", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1001", "prescription_id": "RX-1001-01", "site_code": "SITE-A",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-07-21"
+      },
+      "actor": { "id": "op-sitea-02", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1001", "prescription_id": "RX-1001-02", "site_code": "SITE-A",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-08-20"
+      },
+      "actor": { "id": "dr-a-01", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1001", "prescription_id": "RX-1001-02", "site_code": "SITE-A",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-08-20"
+      },
+      "actor": { "id": "op-sitea-02", "role": "hospital_operator" }
+    },
+    {
+      "type": "exception_grant",
+      "payload": {
+        "patient_code": "P-CKD-1001", "grant_id": "GR-1001-transfer",
+        "reason": "transfer", "drug_codes": ["ESA-ALFA"],
+        "valid_from": "2026-09-01", "valid_to": "2026-09-14",
+        "basis": "透析地点由 SITE-A 调整至 SITE-B，转院期续药"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1001", "prescription_id": "RX-1001-03", "site_code": "SITE-B",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-09-01"
+      },
+      "actor": { "id": "dr-b-02", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1001", "prescription_id": "RX-1001-03", "site_code": "SITE-B",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-09-01"
+      },
+      "actor": { "id": "op-siteb-03", "role": "hospital_operator" }
+    },
+    {
+      "type": "clinician_note",
+      "payload": {
+        "patient_code": "P-CKD-1001", "note_id": "NOTE-1001-01", "noted_on": "2026-09-01",
+        "text": "患者按医联体安排转入本院继续透析，沿原方案续开 ESA-ALFA，日剂量未调整；SITE-A 剩余库存由患者继续使用，属转院衔接，非重复治疗。",
+        "links": [
+          "P-CKD-1001:early_refill:ESA-ALFA|2026-08-20|2026-09-01",
+          "P-CKD-1001:dose_overlap:ESA-ALFA|RX-1001-02|RX-1001-03"
+        ]
+      },
+      "actor": { "id": "dr-b-02", "role": "clinician" }
+    },
+
+    {
+      "type": "patient_alias",
+      "payload": { "patient_code": "P-CKD-1002" },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "dialysis_schedule",
+      "payload": {
+        "patient_code": "P-CKD-1002",
+        "site_code": "SITE-C",
+        "schedule": "周一/周四 下午",
+        "effective_from": "2026-02-01"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "care_episode",
+      "payload": {
+        "patient_code": "P-CKD-1002", "episode_id": "EP-1002-01", "site_code": "SITE-C",
+        "admitted_on": "2026-02-01", "transferred_out_on": "2026-09-10", "kind": "routine"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "care_episode",
+      "payload": {
+        "patient_code": "P-CKD-1002", "episode_id": "EP-1002-02", "site_code": "SITE-D",
+        "admitted_on": "2026-09-10", "transferred_out_on": "2026-09-12", "kind": "emergency"
+      },
+      "actor": { "id": "op-sited-04", "role": "hospital_operator" }
+    },
+    {
+      "type": "care_episode",
+      "payload": {
+        "patient_code": "P-CKD-1002", "episode_id": "EP-1002-03", "site_code": "SITE-C",
+        "admitted_on": "2026-09-12", "kind": "routine"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "regimen_version",
+      "payload": {
+        "patient_code": "P-CKD-1002",
+        "version": 1,
+        "effective_from": "2026-02-01",
+        "items": [
+          { "drug_code": "ESA-ALFA", "daily_dose": 4000, "daily_max": 6000, "unit": "IU", "note": "按周剂量折算的日均剂量" },
+          { "drug_code": "P-BINDER", "daily_dose": 3, "daily_max": 4, "unit": "袋" }
+        ]
+      },
+      "actor": { "id": "dr-c-03", "role": "clinician" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-01", "site_code": "SITE-C",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-08-11"
+      },
+      "actor": { "id": "dr-c-03", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-01", "site_code": "SITE-C",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-08-11"
+      },
+      "actor": { "id": "op-sitec-05", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-02", "site_code": "SITE-C",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-09-10"
+      },
+      "actor": { "id": "dr-c-03", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-02", "site_code": "SITE-C",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-09-10"
+      },
+      "actor": { "id": "op-sitec-05", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-03", "site_code": "SITE-D",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-09-10",
+        "note": "急诊住院期间按透析方案续用"
+      },
+      "actor": { "id": "dr-d-04", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-03", "site_code": "SITE-D",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-09-10"
+      },
+      "actor": { "id": "op-sited-04", "role": "hospital_operator" }
+    },
+    {
+      "type": "exception_grant",
+      "payload": {
+        "patient_code": "P-CKD-1002", "grant_id": "GR-1002-emergency",
+        "reason": "emergency",
+        "valid_from": "2026-09-10", "valid_to": "2026-09-13",
+        "basis": "急诊入住 SITE-D，住院期间续药"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "temp_hold",
+      "payload": {
+        "patient_code": "P-CKD-1002", "hold_id": "HOLD-1002-01",
+        "reason": "同日多院领取 ESA-ALFA，风险模型自动临时限制",
+        "held_on": "2026-09-10"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "hospital_supplement",
+      "payload": {
+        "patient_code": "P-CKD-1002", "supplement_id": "SUP-1002-01", "site_code": "SITE-D",
+        "submitted_on": "2026-09-11",
+        "text": "补传急诊留观记录（不含完整病历）：患者 2026-09-10 因透析并发症急诊留观至 09-12，住院期间用药由本院药房发放。",
+        "links": ["P-CKD-1002:same_day_duplicate:ESA-ALFA|2026-09-10|SITE-C,SITE-D"],
+        "related_prescription_ids": ["RX-1002-03"]
+      },
+      "actor": { "id": "op-sited-04", "role": "hospital_operator" }
+    },
+    {
+      "type": "review_decision",
+      "payload": {
+        "patient_code": "P-CKD-1002", "review_id": "REV-1002-01",
+        "conflict_id": "P-CKD-1002:same_day_duplicate:ESA-ALFA|2026-09-10|SITE-C,SITE-D",
+        "decision": "resolved", "decided_on": "2026-09-12",
+        "rationale": "急诊住院事实经 SITE-D 补传印证，同日领取属治疗连续性，不转入调查。"
+      },
+      "actor": { "id": "reg-09", "role": "regulator" }
+    },
+    {
+      "type": "temp_hold_release",
+      "payload": {
+        "patient_code": "P-CKD-1002", "hold_id": "HOLD-1002-01",
+        "released_on": "2026-09-12",
+        "release_reason": "急诊与补传材料齐备，监管复核确认连续性，授权解除临时限制。"
+      },
+      "actor": { "id": "auth-07", "role": "authorizer" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-04", "site_code": "SITE-C",
+        "drug_code": "P-BINDER", "daily_dose": 3, "unit": "袋", "quantity": 90, "issued_on": "2026-09-05"
+      },
+      "actor": { "id": "dr-c-03", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-04", "site_code": "SITE-C",
+        "drug_code": "P-BINDER", "quantity": 90, "unit": "袋", "dispensed_on": "2026-09-05"
+      },
+      "actor": { "id": "op-sitec-05", "role": "hospital_operator" }
+    },
+    {
+      "type": "shortage_substitution",
+      "payload": {
+        "patient_code": "P-CKD-1002", "substitution_id": "SUB-1002-01",
+        "site_code": "SITE-E", "drug_code": "P-BINDER",
+        "confirmed_by": "pharmacist-e-05", "confirmed_on": "2026-09-18",
+        "valid_from": "2026-09-18", "valid_to": "2026-09-25",
+        "note": "SITE-C 该品规缺药，经药师人工确认后在 SITE-E 临时调剂，仅限本窗口"
+      },
+      "actor": { "id": "op-sited-04", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-05", "site_code": "SITE-E",
+        "drug_code": "P-BINDER", "daily_dose": 3, "unit": "袋", "quantity": 30, "issued_on": "2026-09-18"
+      },
+      "actor": { "id": "dr-c-03", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-05", "site_code": "SITE-E",
+        "drug_code": "P-BINDER", "quantity": 30, "unit": "袋", "dispensed_on": "2026-09-18"
+      },
+      "actor": { "id": "op-sitee-06", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-06", "site_code": "SITE-C",
+        "drug_code": "P-BINDER", "daily_dose": 3, "unit": "袋", "quantity": 90, "issued_on": "2026-09-20"
+      },
+      "actor": { "id": "dr-c-03", "role": "clinician" }
+    },
+    {
+      "type": "prescription_void",
+      "payload": {
+        "patient_code": "P-CKD-1002", "prescription_id": "RX-1002-06",
+        "voided_on": "2026-09-21",
+        "reason": "重复开具：患者已在缺药替代窗口内于 SITE-E 领取，本院处方作废且未发药。"
+      },
+      "actor": { "id": "op-sitec-05", "role": "hospital_operator" }
+    },
+
+    {
+      "type": "patient_alias",
+      "payload": { "patient_code": "P-CKD-1003" },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "dialysis_schedule",
+      "payload": {
+        "patient_code": "P-CKD-1003",
+        "site_code": "SITE-F",
+        "schedule": "周二/周五 上午",
+        "effective_from": "2026-03-01"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "care_episode",
+      "payload": {
+        "patient_code": "P-CKD-1003", "episode_id": "EP-1003-01", "site_code": "SITE-F",
+        "admitted_on": "2026-03-01", "kind": "routine"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "regimen_version",
+      "payload": {
+        "patient_code": "P-CKD-1003",
+        "version": 1,
+        "effective_from": "2026-03-01",
+        "items": [
+          { "drug_code": "ESA-ALFA", "daily_dose": 4000, "daily_max": 4000, "unit": "IU", "note": "剂量已贴说明书上限" },
+          { "drug_code": "P-BINDER", "daily_dose": 3, "daily_max": 4, "unit": "袋" }
+        ]
+      },
+      "actor": { "id": "dr-f-06", "role": "clinician" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-01", "site_code": "SITE-F",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-09-02"
+      },
+      "actor": { "id": "dr-f-06", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-01", "site_code": "SITE-F",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-09-02"
+      },
+      "actor": { "id": "op-sitef-07", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-02", "site_code": "SITE-G",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-09-08"
+      },
+      "actor": { "id": "dr-g-07", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-02", "site_code": "SITE-G",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-09-08"
+      },
+      "actor": { "id": "op-siteg-08", "role": "hospital_operator" }
+    },
+    {
+      "type": "patient_correction",
+      "payload": {
+        "patient_code": "P-CKD-1003", "correction_id": "CORR-1003-01", "submitted_on": "2026-09-09",
+        "text": "09-08 在 SITE-G 取药是经外院医生同意的提前续药，本人没有多买，但暂不能提供书面说明。",
+        "links": ["P-CKD-1003:early_refill:ESA-ALFA|2026-09-02|2026-09-08"]
+      },
+      "actor": { "id": "patient-1003", "role": "patient" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-03", "site_code": "SITE-G",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-09-15"
+      },
+      "actor": { "id": "dr-g-07", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-03", "site_code": "SITE-G",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-09-15"
+      },
+      "actor": { "id": "op-siteg-08", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-04", "site_code": "SITE-H",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 120000, "issued_on": "2026-09-15"
+      },
+      "actor": { "id": "dr-h-08", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-04", "site_code": "SITE-H",
+        "drug_code": "ESA-ALFA", "quantity": 120000, "unit": "IU", "dispensed_on": "2026-09-15"
+      },
+      "actor": { "id": "op-siteh-09", "role": "hospital_operator" }
+    },
+    {
+      "type": "review_decision",
+      "payload": {
+        "patient_code": "P-CKD-1003", "review_id": "REV-1003-01",
+        "conflict_id": "P-CKD-1003:same_day_duplicate:ESA-ALFA|2026-09-15|SITE-G,SITE-H",
+        "decision": "escalate_investigation", "decided_on": "2026-09-16",
+        "rationale": "14 天内跨 3 家机构高频领取，剂量贴说明书上限，无转院/急诊/缺药事实，转入调查。"
+      },
+      "actor": { "id": "reg-09", "role": "regulator" }
+    },
+    {
+      "type": "temp_hold",
+      "payload": {
+        "patient_code": "P-CKD-1003", "hold_id": "HOLD-1003-01",
+        "reason": "同日多院领取且复核裁定转入调查，调查期间临时限制",
+        "held_on": "2026-09-16"
+      },
+      "actor": { "id": "op-region-01", "role": "hospital_operator" }
+    },
+    {
+      "type": "prescription",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-05", "site_code": "SITE-I",
+        "drug_code": "ESA-ALFA", "daily_dose": 4000, "unit": "IU", "quantity": 60000, "issued_on": "2026-09-22"
+      },
+      "actor": { "id": "dr-i-09", "role": "clinician" }
+    },
+    {
+      "type": "dispense",
+      "payload": {
+        "patient_code": "P-CKD-1003", "prescription_id": "RX-1003-05", "site_code": "SITE-I",
+        "drug_code": "ESA-ALFA", "quantity": 60000, "unit": "IU", "dispensed_on": "2026-09-22"
+      },
+      "actor": { "id": "op-sitei-10", "role": "hospital_operator" }
+    }
+  ]
+}
