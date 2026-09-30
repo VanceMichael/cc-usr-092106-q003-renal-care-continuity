@@ -1,0 +1,216 @@
+{
+  "domain": "renal-care-continuity",
+  "version": 1,
+  "journal_id": "J-2026-0913",
+  "patient_code": "P-REN-0913",
+  "facts": [
+    {
+      "fact_id": "f-0913-01",
+      "seq": 1,
+      "type": "drug_catalog",
+      "at": "2026-08-01T08:00:00+08:00",
+      "recorded_by": { "actor_code": "SYS-REGISTRY", "role": "system" },
+      "sensitivity": "ordinary",
+      "data": {
+        "drugs": [
+          { "drug_code": "D001", "name": "重组人促红素α注射液", "class_code": "ESA", "daily_dose_max": 4000, "unit": "IU" },
+          { "drug_code": "D101", "name": "碳酸镧咀嚼片", "class_code": "PHOS-BIND", "daily_dose_max": 3000, "unit": "mg" }
+        ]
+      }
+    },
+    {
+      "fact_id": "f-0913-02",
+      "seq": 2,
+      "type": "drug_class_catalog",
+      "at": "2026-08-01T08:00:00+08:00",
+      "recorded_by": { "actor_code": "SYS-REGISTRY", "role": "system" },
+      "sensitivity": "ordinary",
+      "data": {
+        "classes": [
+          { "class_code": "ESA", "name": "促红细胞生成素类", "daily_dose_max": 4000, "unit": "IU" }
+        ]
+      }
+    },
+    {
+      "fact_id": "f-0913-03",
+      "seq": 3,
+      "type": "site_enrollment",
+      "at": "2026-08-01T09:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": { "org_id": "ORG-JIA", "site_role": "dialysis_site", "effective_from": "2026-08-01" }
+    },
+    {
+      "fact_id": "f-0913-04",
+      "seq": 4,
+      "type": "dialysis_schedule",
+      "at": "2026-08-01T09:05:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": { "facility_org_id": "ORG-JIA", "pattern": "TUE/THU/SAT", "effective_from": "2026-08-01" }
+    },
+    {
+      "fact_id": "f-0913-05",
+      "seq": 5,
+      "type": "regimen_version",
+      "at": "2026-08-01T09:10:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": {
+        "regimen_id": "RG-0913",
+        "version": 1,
+        "org_id": "ORG-JIA",
+        "active_from": "2026-08-01",
+        "drugs": [{ "drug_code": "D001", "daily_dose": 3000, "unit": "IU" }]
+      }
+    },
+    {
+      "fact_id": "f-0913-06",
+      "seq": 6,
+      "type": "prescription",
+      "at": "2026-09-20T09:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": {
+        "prescription_id": "RX-0913-01",
+        "regimen_id": "RG-0913",
+        "regimen_version": 1,
+        "org_id": "ORG-JIA",
+        "drug_code": "D001",
+        "daily_dose": 4000,
+        "unit": "IU",
+        "prescribed_for_days": 30
+      }
+    },
+    {
+      "fact_id": "f-0913-07",
+      "seq": 7,
+      "type": "dispense",
+      "at": "2026-09-20T09:30:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-JIA", "role": "hospital_pharmacy", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": {
+        "dispense_id": "DP-0913-01",
+        "prescription_id": "RX-0913-01",
+        "drug_code": "D001",
+        "quantity": 120000,
+        "unit": "IU",
+        "daily_dose": 4000,
+        "days_supply": 30,
+        "org_id": "ORG-JIA"
+      }
+    },
+    {
+      "fact_id": "f-0913-08",
+      "seq": 8,
+      "type": "exception_grant",
+      "at": "2026-09-20T08:50:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": {
+        "exception_id": "EX-0913-OLD",
+        "kind": "transfer",
+        "valid_from": "2026-08-10",
+        "valid_to": "2026-09-09",
+        "evidence": ["转诊申请单 TR-2026-08-031"],
+        "granted_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+        "linked_orgs": ["ORG-JIA", "ORG-DING"],
+        "reason": "8月临时透析点调整，例外早已到期"
+      }
+    },
+    {
+      "fact_id": "f-0913-09",
+      "seq": 9,
+      "type": "prescription",
+      "at": "2026-09-25T10:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-ZHAO", "role": "clinician", "org_id": "ORG-DING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "prescription_id": "RX-0913-02",
+        "regimen_id": "RG-0913",
+        "regimen_version": 1,
+        "org_id": "ORG-DING",
+        "drug_code": "D001",
+        "daily_dose": 4000,
+        "unit": "IU",
+        "prescribed_for_days": 30
+      }
+    },
+    {
+      "fact_id": "f-0913-10",
+      "seq": 10,
+      "type": "dispense",
+      "at": "2026-09-25T10:20:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-DING", "role": "hospital_pharmacy", "org_id": "ORG-DING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "dispense_id": "DP-0913-02",
+        "prescription_id": "RX-0913-02",
+        "drug_code": "D001",
+        "quantity": 120000,
+        "unit": "IU",
+        "daily_dose": 4000,
+        "days_supply": 30,
+        "org_id": "ORG-DING"
+      }
+    },
+    {
+      "fact_id": "f-0913-11",
+      "seq": 11,
+      "type": "prescription",
+      "at": "2026-09-25T14:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-SUN", "role": "clinician", "org_id": "ORG-BING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "prescription_id": "RX-0913-03",
+        "regimen_id": "RG-0913",
+        "regimen_version": 1,
+        "org_id": "ORG-BING",
+        "drug_code": "D001",
+        "daily_dose": 4000,
+        "unit": "IU",
+        "prescribed_for_days": 30
+      }
+    },
+    {
+      "fact_id": "f-0913-12",
+      "seq": 12,
+      "type": "dispense",
+      "at": "2026-09-25T14:15:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-BING", "role": "hospital_pharmacy", "org_id": "ORG-BING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "dispense_id": "DP-0913-03",
+        "prescription_id": "RX-0913-03",
+        "drug_code": "D001",
+        "quantity": 120000,
+        "unit": "IU",
+        "daily_dose": 4000,
+        "days_supply": 30,
+        "org_id": "ORG-BING"
+      }
+    },
+    {
+      "fact_id": "f-0913-13",
+      "seq": 13,
+      "type": "temporary_restriction",
+      "at": "2026-09-25T15:00:00+08:00",
+      "recorded_by": { "actor_code": "SYS-RISK", "role": "system" },
+      "sensitivity": "ordinary",
+      "data": {
+        "hold_id": "HOLD-0913-01",
+        "scope_prescription_id": "RX-0913-03",
+        "reason": "同日多院领取同药，且距上次领取仅5天"
+      }
+    },
+    {
+      "fact_id": "f-0913-14",
+      "seq": 14,
+      "type": "genetic_result",
+      "at": "2026-09-26T10:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "restricted",
+      "data": { "sealed_ref": "SEAL-0913-G01", "label": "遗传检测结果已密封归档", "content_included": false }
+    }
+  ]
+}

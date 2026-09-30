@@ -1,0 +1,443 @@
+{
+  "domain": "renal-care-continuity",
+  "version": 1,
+  "journal_id": "J-2026-0427",
+  "patient_code": "P-REN-0427",
+  "facts": [
+    {
+      "fact_id": "f-0427-01",
+      "seq": 1,
+      "type": "drug_catalog",
+      "at": "2026-08-31T08:00:00+08:00",
+      "recorded_by": { "actor_code": "SYS-REGISTRY", "role": "system" },
+      "sensitivity": "ordinary",
+      "data": {
+        "drugs": [
+          { "drug_code": "D001", "name": "重组人促红素α注射液", "class_code": "ESA", "daily_dose_max": 4000, "unit": "IU" },
+          { "drug_code": "D002", "name": "重组人促红素β注射液", "class_code": "ESA", "daily_dose_max": 4000, "unit": "IU" },
+          { "drug_code": "D101", "name": "碳酸镧咀嚼片", "class_code": "PHOS-BIND", "daily_dose_max": 3000, "unit": "mg" }
+        ]
+      }
+    },
+    {
+      "fact_id": "f-0427-02",
+      "seq": 2,
+      "type": "drug_class_catalog",
+      "at": "2026-08-31T08:00:00+08:00",
+      "recorded_by": { "actor_code": "SYS-REGISTRY", "role": "system" },
+      "sensitivity": "ordinary",
+      "data": {
+        "classes": [
+          { "class_code": "ESA", "name": "促红细胞生成素类", "daily_dose_max": 4000, "unit": "IU" },
+          { "class_code": "PHOS-BIND", "name": "口服磷结合剂", "daily_dose_max": 3000, "unit": "mg" }
+        ]
+      }
+    },
+    {
+      "fact_id": "f-0427-03",
+      "seq": 3,
+      "type": "site_enrollment",
+      "at": "2026-09-01T09:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": { "org_id": "ORG-JIA", "site_role": "dialysis_site", "effective_from": "2026-09-01" }
+    },
+    {
+      "fact_id": "f-0427-04",
+      "seq": 4,
+      "type": "dialysis_schedule",
+      "at": "2026-09-01T09:05:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": { "facility_org_id": "ORG-JIA", "pattern": "MON/WED/FRI", "effective_from": "2026-09-01" }
+    },
+    {
+      "fact_id": "f-0427-05",
+      "seq": 5,
+      "type": "regimen_version",
+      "at": "2026-09-01T09:10:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": {
+        "regimen_id": "RG-0427",
+        "version": 1,
+        "org_id": "ORG-JIA",
+        "active_from": "2026-09-01",
+        "drugs": [
+          { "drug_code": "D001", "daily_dose": 3600, "unit": "IU" },
+          { "drug_code": "D101", "daily_dose": 1500, "unit": "mg" }
+        ]
+      }
+    },
+    {
+      "fact_id": "f-0427-06",
+      "seq": 6,
+      "type": "prescription",
+      "at": "2026-09-01T09:15:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": {
+        "prescription_id": "RX-0427-01",
+        "regimen_id": "RG-0427",
+        "regimen_version": 1,
+        "org_id": "ORG-JIA",
+        "drug_code": "D001",
+        "daily_dose": 3600,
+        "unit": "IU",
+        "prescribed_for_days": 30
+      }
+    },
+    {
+      "fact_id": "f-0427-07",
+      "seq": 7,
+      "type": "dispense",
+      "at": "2026-09-01T10:00:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-JIA", "role": "hospital_pharmacy", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": {
+        "dispense_id": "DP-0427-01",
+        "prescription_id": "RX-0427-01",
+        "drug_code": "D001",
+        "quantity": 108000,
+        "unit": "IU",
+        "daily_dose": 3600,
+        "days_supply": 30,
+        "org_id": "ORG-JIA"
+      }
+    },
+    {
+      "fact_id": "f-0427-08",
+      "seq": 8,
+      "type": "genetic_result",
+      "at": "2026-09-05T14:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "restricted",
+      "data": { "sealed_ref": "SEAL-0427-G01", "label": "遗传检测结果已密封归档", "content_included": false }
+    },
+    {
+      "fact_id": "f-0427-09",
+      "seq": 9,
+      "type": "site_enrollment",
+      "at": "2026-09-12T11:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-LI", "role": "clinician", "org_id": "ORG-YI" },
+      "sensitivity": "ordinary",
+      "data": { "org_id": "ORG-YI", "site_role": "dialysis_site", "effective_from": "2026-09-15" }
+    },
+    {
+      "fact_id": "f-0427-10",
+      "seq": 10,
+      "type": "exception_grant",
+      "at": "2026-09-12T11:10:00+08:00",
+      "recorded_by": { "actor_code": "DR-LI", "role": "clinician", "org_id": "ORG-YI" },
+      "sensitivity": "ordinary",
+      "data": {
+        "exception_id": "EX-0427-TRANSFER",
+        "kind": "transfer",
+        "valid_from": "2026-09-12",
+        "valid_to": "2026-10-12",
+        "evidence": ["转诊申请单 TR-2026-09-115", "透析排期确认单 ORG-YI"],
+        "granted_by": { "actor_code": "DR-LI", "role": "clinician", "org_id": "ORG-YI" },
+        "linked_orgs": ["ORG-JIA", "ORG-YI"],
+        "reason": "透析地点调整至医联体南区，期间允许原机构与新机构间续方接续"
+      }
+    },
+    {
+      "fact_id": "f-0427-11",
+      "seq": 11,
+      "type": "dialysis_schedule",
+      "at": "2026-09-15T08:30:00+08:00",
+      "recorded_by": { "actor_code": "DR-LI", "role": "clinician", "org_id": "ORG-YI" },
+      "sensitivity": "ordinary",
+      "data": { "facility_org_id": "ORG-YI", "pattern": "MON/WED/FRI", "effective_from": "2026-09-15" }
+    },
+    {
+      "fact_id": "f-0427-12",
+      "seq": 12,
+      "type": "regimen_version",
+      "at": "2026-09-15T08:40:00+08:00",
+      "recorded_by": { "actor_code": "DR-LI", "role": "clinician", "org_id": "ORG-YI" },
+      "sensitivity": "ordinary",
+      "data": {
+        "regimen_id": "RG-0427",
+        "version": 2,
+        "org_id": "ORG-YI",
+        "active_from": "2026-09-15",
+        "drugs": [
+          { "drug_code": "D002", "daily_dose": 3600, "unit": "IU" },
+          { "drug_code": "D101", "daily_dose": 1500, "unit": "mg" }
+        ]
+      }
+    },
+    {
+      "fact_id": "f-0427-13",
+      "seq": 13,
+      "type": "prescription",
+      "at": "2026-09-15T08:45:00+08:00",
+      "recorded_by": { "actor_code": "DR-LI", "role": "clinician", "org_id": "ORG-YI" },
+      "sensitivity": "ordinary",
+      "data": {
+        "prescription_id": "RX-0427-02",
+        "regimen_id": "RG-0427",
+        "regimen_version": 2,
+        "org_id": "ORG-YI",
+        "drug_code": "D002",
+        "daily_dose": 3600,
+        "unit": "IU",
+        "prescribed_for_days": 30
+      }
+    },
+    {
+      "fact_id": "f-0427-14",
+      "seq": 14,
+      "type": "temporary_restriction",
+      "at": "2026-09-15T08:46:00+08:00",
+      "recorded_by": { "actor_code": "SYS-RISK", "role": "system" },
+      "sensitivity": "ordinary",
+      "data": {
+        "hold_id": "HOLD-0427-01",
+        "scope_prescription_id": "RX-0427-02",
+        "reason": "风险模型提示跨院同类用药重叠，临时限制待人工核实"
+      }
+    },
+    {
+      "fact_id": "f-0427-15",
+      "seq": 15,
+      "type": "dispense",
+      "at": "2026-09-15T09:30:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-YI", "role": "hospital_pharmacy", "org_id": "ORG-YI" },
+      "sensitivity": "ordinary",
+      "data": {
+        "dispense_id": "DP-0427-02",
+        "prescription_id": "RX-0427-02",
+        "drug_code": "D002",
+        "quantity": 108000,
+        "unit": "IU",
+        "daily_dose": 3600,
+        "days_supply": 30,
+        "org_id": "ORG-YI"
+      }
+    },
+    {
+      "fact_id": "f-0427-16",
+      "seq": 16,
+      "type": "restriction_lift",
+      "at": "2026-09-16T10:00:00+08:00",
+      "recorded_by": { "actor_code": "AUTH-01", "role": "authorized_officer" },
+      "sensitivity": "ordinary",
+      "data": {
+        "hold_id": "HOLD-0427-01",
+        "reason": "已核验转诊申请与透析排期，治疗连续性成立"
+      }
+    },
+    {
+      "fact_id": "f-0427-17",
+      "seq": 17,
+      "type": "clinician_note",
+      "at": "2026-09-18T22:10:00+08:00",
+      "recorded_by": { "actor_code": "DR-WANG", "role": "clinician", "org_id": "ORG-BING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "note_id": "CN-0427-EM",
+        "text": "急诊留观，血红蛋白骤降，按体重予短效促红素一支，透析后由住院部给药观察。",
+        "linked_fact_ids": ["RX-0427-03"]
+      }
+    },
+    {
+      "fact_id": "f-0427-18",
+      "seq": 18,
+      "type": "exception_grant",
+      "at": "2026-09-18T22:15:00+08:00",
+      "recorded_by": { "actor_code": "DR-WANG", "role": "clinician", "org_id": "ORG-BING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "exception_id": "EX-0427-EMERGENCY",
+        "kind": "emergency",
+        "valid_from": "2026-09-18",
+        "valid_to": "2026-09-19",
+        "evidence": ["急诊留观记录 ER-2026-09-18-073"],
+        "granted_by": { "actor_code": "DR-WANG", "role": "clinician", "org_id": "ORG-BING" },
+        "linked_orgs": ["ORG-JIA", "ORG-YI", "ORG-BING"],
+        "reason": "急诊留观期间单次补救给药"
+      }
+    },
+    {
+      "fact_id": "f-0427-19",
+      "seq": 19,
+      "type": "prescription",
+      "at": "2026-09-18T22:20:00+08:00",
+      "recorded_by": { "actor_code": "DR-WANG", "role": "clinician", "org_id": "ORG-BING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "prescription_id": "RX-0427-03",
+        "regimen_id": "RG-0427",
+        "regimen_version": 2,
+        "org_id": "ORG-BING",
+        "drug_code": "D001",
+        "daily_dose": 4000,
+        "unit": "IU",
+        "prescribed_for_days": 2
+      }
+    },
+    {
+      "fact_id": "f-0427-20",
+      "seq": 20,
+      "type": "dispense",
+      "at": "2026-09-18T22:30:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-BING", "role": "hospital_pharmacy", "org_id": "ORG-BING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "dispense_id": "DP-0427-03",
+        "prescription_id": "RX-0427-03",
+        "drug_code": "D001",
+        "quantity": 8000,
+        "unit": "IU",
+        "daily_dose": 4000,
+        "days_supply": 2,
+        "org_id": "ORG-BING"
+      }
+    },
+    {
+      "fact_id": "f-0427-21",
+      "seq": 21,
+      "type": "full_record_import",
+      "at": "2026-09-19T09:00:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-BING", "role": "hospital_pharmacy", "org_id": "ORG-BING" },
+      "sensitivity": "restricted",
+      "data": { "sealed_ref": "SEAL-0427-R01", "source_org": "ORG-BING", "label": "住院完整病历已密封归档", "content_included": false }
+    },
+    {
+      "fact_id": "f-0427-22",
+      "seq": 22,
+      "type": "clinician_note",
+      "at": "2026-09-22T10:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-LI", "role": "clinician", "org_id": "ORG-YI" },
+      "sensitivity": "ordinary",
+      "data": {
+        "note_id": "CN-0427-SHORT",
+        "text": "本机构 D002 库存中断，联系医联体药房 ORG-DING 按现行方案调剂，剂量不变。",
+        "linked_fact_ids": ["DP-0427-04"]
+      }
+    },
+    {
+      "fact_id": "f-0427-23",
+      "seq": 23,
+      "type": "exception_grant",
+      "at": "2026-09-22T10:05:00+08:00",
+      "recorded_by": { "actor_code": "AUTH-02", "role": "authorized_officer" },
+      "sensitivity": "ordinary",
+      "data": {
+        "exception_id": "EX-0427-SHORTAGE",
+        "kind": "shortage_substitution",
+        "valid_from": "2026-09-22",
+        "valid_to": "2026-09-24",
+        "evidence": ["缺货登记 ORG-YI-20260922", "医联体调剂单 ORG-DING-7781"],
+        "granted_by": { "actor_code": "AUTH-02", "role": "authorized_officer" },
+        "manually_confirmed": true,
+        "confirmed_by": "AUTH-02",
+        "linked_orgs": ["ORG-YI", "ORG-DING"],
+        "reason": "原医院缺药，经人工确认的同剂量替代取药"
+      }
+    },
+    {
+      "fact_id": "f-0427-24",
+      "seq": 24,
+      "type": "prescription",
+      "at": "2026-09-22T10:30:00+08:00",
+      "recorded_by": { "actor_code": "DR-LI", "role": "clinician", "org_id": "ORG-YI" },
+      "sensitivity": "ordinary",
+      "data": {
+        "prescription_id": "RX-0427-04",
+        "regimen_id": "RG-0427",
+        "regimen_version": 2,
+        "org_id": "ORG-YI",
+        "drug_code": "D002",
+        "daily_dose": 3600,
+        "unit": "IU",
+        "prescribed_for_days": 25
+      }
+    },
+    {
+      "fact_id": "f-0427-25",
+      "seq": 25,
+      "type": "dispense",
+      "at": "2026-09-22T11:00:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-DING", "role": "hospital_pharmacy", "org_id": "ORG-DING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "dispense_id": "DP-0427-04",
+        "prescription_id": "RX-0427-04",
+        "drug_code": "D002",
+        "quantity": 90000,
+        "unit": "IU",
+        "daily_dose": 3600,
+        "days_supply": 25,
+        "org_id": "ORG-DING"
+      }
+    },
+    {
+      "fact_id": "f-0427-26",
+      "seq": 26,
+      "type": "correction",
+      "at": "2026-09-24T15:00:00+08:00",
+      "recorded_by": { "actor_code": "PAT-0427", "role": "patient" },
+      "sensitivity": "ordinary",
+      "data": {
+        "correction_id": "COR-0427-01",
+        "target_fact_id": "f-0427-17",
+        "claimed_text": "9月18日晚的药物由急诊护士现场给药，本人未将药品带走。",
+        "reason": "患者补充说明领取方式"
+      }
+    },
+    {
+      "fact_id": "f-0427-27",
+      "seq": 27,
+      "type": "supplement",
+      "at": "2026-09-24T16:30:00+08:00",
+      "recorded_by": { "actor_code": "PHARM-BING", "role": "hospital_pharmacy", "org_id": "ORG-BING" },
+      "sensitivity": "ordinary",
+      "data": {
+        "supplement_id": "SUP-0427-01",
+        "target_fact_id": "f-0427-20",
+        "inpatient_administration": true,
+        "evidence": "住院给药执行单 NR-2026-09-18-073"
+      }
+    },
+    {
+      "fact_id": "f-0427-28",
+      "seq": 28,
+      "type": "void",
+      "at": "2026-09-28T09:00:00+08:00",
+      "recorded_by": { "actor_code": "DR-CHEN", "role": "clinician", "org_id": "ORG-JIA" },
+      "sensitivity": "ordinary",
+      "data": {
+        "void_id": "VOID-0427-01",
+        "target_fact_id": "f-0427-06",
+        "target_type": "prescription",
+        "reason": "患者转出，原机构处方终止；既往领取记录保留"
+      }
+    },
+    {
+      "fact_id": "f-0427-29",
+      "seq": 29,
+      "type": "review",
+      "at": "2026-09-28T14:00:00+08:00",
+      "recorded_by": { "actor_code": "REG-7", "role": "regulator" },
+      "sensitivity": "ordinary",
+      "data": {
+        "review_id": "REV-0427-01",
+        "conflict_refs": [
+          "dose_overlap:ESA@2026-09-15:RX-0427-01|RX-0427-02",
+          "dose_overlap:ESA@2026-09-22:RX-0427-01|RX-0427-02|RX-0427-04",
+          "interval_anomaly:ESA@2026-09-22:DP-0427-02|DP-0427-04",
+          "near_label_max:D001@2026-09-01:RX-0427-01",
+          "near_label_max:D001@2026-09-18:RX-0427-03",
+          "near_label_max:D002@2026-09-15:RX-0427-02",
+          "near_label_max:D002@2026-09-22:RX-0427-04"
+        ],
+        "decision": "evidence_sufficient",
+        "reviewer_code": "REG-7",
+        "rationale": "转诊、急诊与缺药替代均在有效期限内且证据链完整，跨院取药与透析排期一致，治疗连续性证据充分。"
+      }
+    }
+  ]
+}

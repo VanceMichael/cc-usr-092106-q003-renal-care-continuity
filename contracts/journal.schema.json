@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "跨院用药连续性事实日志",
+  "description": "只追加（append-only）的事实流：患者更正、医院补传、处方撤销、监管复核均以新事实追加，不修改或删除既有事实。seq 严格递增，fact_id 全局唯一。",
+  "type": "object",
+  "required": ["domain", "version", "journal_id", "patient_code", "facts"],
+  "properties": {
+    "domain": { "const": "renal-care-continuity" },
+    "version": { "type": "integer", "minimum": 1 },
+    "journal_id": { "type": "string", "minLength": 1 },
+    "patient_code": { "type": "string", "minLength": 1, "description": "患者代号，非真实身份标识" },
+    "facts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fact" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "actor": {
+      "type": "object",
+      "required": ["actor_code", "role"],
+      "properties": {
+        "actor_code": { "type": "string", "minLength": 1 },
+        "role": {
+          "enum": [
+            "patient",
+            "clinician",
+            "hospital_pharmacy",
+            "regulator",
+            "authorized_officer",
+            "system"
+          ]
+        },
+        "org_id": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "fact": {
+      "type": "object",
+      "required": ["fact_id", "seq", "type", "at", "recorded_by", "sensitivity", "data"],
+      "properties": {
+        "fact_id": { "type": "string", "minLength": 1 },
+        "seq": { "type": "integer", "minimum": 1 },
+        "type": {
+          "enum": [
+            "drug_catalog",
+            "drug_class_catalog",
+            "dialysis_schedule",
+            "site_enrollment",
+            "regimen_version",
+            "prescription",
+            "dispense",
+            "clinician_note",
+            "exception_grant",
+            "correction",
+            "supplement",
+            "void",
+            "review",
+            "temporary_restriction",
+            "restriction_lift",
+            "genetic_result",
+            "full_record_import"
+          ]
+        },
+        "at": { "type": "string", "format": "date-time" },
+        "recorded_by": { "$ref": "#/$defs/actor" },
+        "sensitivity": {
+          "enum": ["ordinary", "restricted"],
+          "description": "restricted（遗传信息、完整病历等）不进入普通监管视图"
+        },
+        "data": { "type": "object" }
+      },
+      "oneOf": [
+        {
+          "properties": { "type": { "const": "drug_catalog" } },
+          "required": ["data"]
+        },
+        {
+          "properties": { "type": { "const": "drug_class_catalog" } },
+          "required": ["data"]
+        },
+        {
+          "properties": { "type": { "const": "dialysis_schedule" } },
+          "required": ["data"]
+        },
+        {
+          "properties": {
+            "type": { "const": "genetic_result" },
+            "sensitivity": { "const": "restricted" }
+          }
+        },
+        {
+          "properties": {
+            "type": { "const": "full_record_import" },
+            "sensitivity": { "const": "restricted" }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "exception_grant": {
+      "type": "object",
+      "required": [
+        "exception_id",
+        "kind",
+        "valid_from",
+        "valid_to",
+        "evidence",
+        "granted_by"
+      ],
+      "properties": {
+        "exception_id": { "type": "string" },
+        "kind": { "enum": ["transfer", "emergency", "shortage_substitution"] },
+        "valid_from": { "type": "string", "format": "date" },
+        "valid_to": { "type": "string", "format": "date" },
+        "evidence": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "granted_by": { "$ref": "#/$defs/actor" },
+        "manually_confirmed": {
+          "type": "boolean",
+          "description": "缺药替代必须经人工确认"
+        },
+        "confirmed_by": { "type": "string" },
+        "linked_fact_ids": { "type": "array", "items": { "type": "string" } },
+        "linked_orgs": { "type": "array", "items": { "type": "string" } },
+        "reason": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "required": ["review_id", "conflict_refs", "decision", "reviewer_code", "rationale"],
+      "properties": {
+        "review_id": { "type": "string" },
+        "conflict_refs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "decision": { "enum": ["evidence_sufficient", "refer_investigation"] },
+        "reviewer_code": { "type": "string" },
+        "rationale": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}
